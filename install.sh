@@ -15,6 +15,18 @@ pacman -Syyu --noconfirm \
     ; pacman -Scc --noconfirm \
     ; rm -Rf /var/cache/pacman/pkg/*
 
-mkdir -p gitlab/{config,data,logs,ssl} \
-    && mkdir -p gitlab-runner/{config,ssl} \
-    && mkdir -p tmp/ssl
+
+if [ ! -d "gitlab" ]
+then
+    mkdir -p gitlab/{config,data,logs,ssl}
+fi
+
+if [ ! -d "gitlab-runner" ]
+then
+    mkdir -p gitlab-runner/{config,ssl}
+fi
+
+if [ ! -d "tmp¨ ]
+then
+    mkdir -p tmp/ssl
+fi
