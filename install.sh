@@ -14,3 +14,19 @@ pacman -Syyu --noconfirm \
     ; pacman -Rns $(pacman -Qtdq) \
     ; pacman -Scc --noconfirm \
     ; rm -Rf /var/cache/pacman/pkg/*
+
+
+if [ -d gitlab ]
+then
+    mkdir -p gitlab/{config,data,logs,ssl}
+fi
+
+if [ -d gitlab-runner ]
+then
+    mkdir -p gitlab-runner/{config,ssl}
+fi
+
+if [ -d tmp ]
+then
+    mkdir -p tmp/ssl
+fi
