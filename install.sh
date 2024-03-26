@@ -26,7 +26,16 @@ then
     mkdir -p gitlab-runner/{config,ssl}
 fi
 
-if [ ! -d "tmp¨ ]
+if [ ! -d "tmp" ]
 then
     mkdir -p tmp/ssl
 fi
+
+# Install Docker
+pacman -S docker docker-compose
+
+systemctl start docker.service
+
+systemctl enable docker.service
+
+sudo usermod -aG docker $USER
