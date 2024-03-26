@@ -10,8 +10,6 @@ pacman-key --init \
 
 # Update system
 pacman -Syyu --noconfirm \
-    curl \
-    wget \
     openssh \
     ; pacman -Rns $(pacman -Qtdq) \
     ; pacman -Scc --noconfirm \
