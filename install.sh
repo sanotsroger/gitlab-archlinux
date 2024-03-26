@@ -39,7 +39,7 @@ systemctl start docker.service
 
 systemctl enable docker.service
 
-sudo usermod -aG docker $
+sudo usermod -aG docker $USER
 
 # Generate certificates for https
 openssl genrsa -out tmp/ssl/ca.key 4096
