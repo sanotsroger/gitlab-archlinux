@@ -32,7 +32,7 @@ then
 fi
 
 # Install Docker
-pacman -S docker docker-compose
+pacman -S -y docker docker-compose
 
 systemctl start docker.service
 
