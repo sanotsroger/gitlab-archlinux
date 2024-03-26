@@ -9,8 +9,7 @@ pacman-key --init \
 && sed -i 's/^Server = https:\/\/.*/Server = https:\/\/archlinux.c3sl.ufpr.br\/$repo\/os\/$arch/' /etc/pacman.d/mirrorlist
 
 # Update system
-pacman -Syyu --noconfirm \
-    openssh \
+pacman -Syyuu --noconfirm \
     ; pacman -Rns $(pacman -Qtdq) \
     ; pacman -Scc --noconfirm \
     ; rm -Rf /var/cache/pacman/pkg/*
@@ -32,7 +31,9 @@ then
 fi
 
 # Install Docker
-pacman -S -y docker docker-compose
+pacman -S --noconfirm \
+    docker \
+    docker-compose
 
 systemctl start docker.service
 
