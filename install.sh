@@ -39,4 +39,24 @@ systemctl start docker.service
 
 systemctl enable docker.service
 
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $
+
+# Generate certificates for https
+openssl genrsa -out tmp/ssl/ca.key 4096
+
+openssl req -new -x509 -days 3650 \
+    -key tmp/ssl/ca.key \
+    -out tmp/ssl/ca.crt
+
+openssl req -newkey rsa:4096 -nodes \
+    -keyout tmp/ssl/server.key \
+        -out tmp/ssl/server.csr
+
+openssl x509 -req -extfile <(printf "subjectAltName=DNS:githomelab,DNS:githomelab.local") \
+    -days 3650 \
+    -in tmp/ssl/server.csr \
+    -CA tmp/ssl/ca.crt \
+    -CAkey tmp/ssl/ca.key \
+    -CAcreateserial -out tmp/ssl/server.crt
+
+	
